@@ -43,7 +43,7 @@ float paddingImage = 40;
 
 boolean bEdit = true;
 
-ArrayList<PShape> bgCurves;
+ArrayList<PShapeCustom> bgCurves;
 ArrayList<ControlBgCurve> controlsBgCurves;
 
 // --------------------------------------------------
@@ -154,7 +154,7 @@ void loadAssets()
   bg = loadImage("images/cdv-montaigne5.jpg");
   hindRegular = loadFont("fonts/Hind-Regular-24.vlw");
 
-  bgCurves = new ArrayList<PShape>();
+  bgCurves = new ArrayList<PShapeCustom>();
   controlsBgCurves = new ArrayList<ControlBgCurve>();
 }
 
@@ -236,8 +236,8 @@ void drawBackgroundCurves()
 {
   synchronized(bgCurves)
   {
-    for (PShape bgCurve : bgCurves)
-      shape(bgCurve, 0, 0, width, height);
+    for (PShapeCustom bgCurve : bgCurves)
+      shape(bgCurve.shape, 0, 0, width, height);
   }
 }
 
@@ -570,8 +570,9 @@ void dropEvent(DropEvent theDropEvent)
       {
         synchronized(bgCurves)
         {
-          bgCurves.add( s );
+          bgCurves.add( new PShapeCustom(filename,s) );
         }
+        
         updateControlsBgCurves(filename, s);
       }
     } else if (getFileExtension(f).toLowerCase().equals("json"))
@@ -589,6 +590,18 @@ void saveAppState()
 {
   JSONObject jAppState = new JSONObject();
   jAppState.setString("filenameCellsVisited",filenameCellsVisited);
+  JSONArray jBgCurves = new JSONArray();
+  synchronized(bgCurves)
+  {
+    int index=0;
+    for (PShapeCustom c : bgCurves)
+    {
+      JSONObject jc = new JSONObject();
+      jc.setString("filename", c.filename);
+      jBgCurves.setJSONObject( index++, jc );
+    }
+    jAppState.setJSONArray("curves", jBgCurves);
+  }
   
   saveJSONObject(jAppState, "appstate.json");
 }
@@ -599,6 +612,22 @@ void loadAppState()
   try{
     JSONObject jAppState = loadJSONObject("appstate.json");
     filenameCellsVisited = jAppState.getString("filenameCellsVisited");
+    JSONArray jBgCurves = jAppState.getJSONArray("bgCurvesFilename");
+    for (int i=0; i < jBgCurves.size(); i++)
+    {
+      JSONObject j = jBgCurves.getJSONObject(i);
+      String filename = j.getString("filename");
+      PShape s = loadShape( filename );
+      if (s != null)
+      {
+        synchronized(bgCurves)
+        {
+          bgCurves.add( new PShapeCustom(filename,s) );
+        }
+        updateControlsBgCurves(filename, s);
+      }
+    }
+    
     loadCellsVisited(filenameCellsVisited);
   } catch(Exception e){
   

@@ -18,6 +18,17 @@ String getFileExtension(File f)
   return ext;
 }
 
+class PShapeCustom
+{
+  String filename;
+  PShape shape;
+  PShapeCustom(String filename_, PShape shape_)
+  {
+    this.filename = filename_;
+    this.shape = shape_;
+  }
+}
+
 // ----------------------------------------------------------------
 class ControlBgCurve implements CallbackListener
 {
