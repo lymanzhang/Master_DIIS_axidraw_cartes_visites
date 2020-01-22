@@ -1,4 +1,4 @@
 {
-  "filenameCellsVisited": "grid_200121_202359.json",
-  "filename": [{"filename": "courbe_200120_153107.svg"}]
+  "curves": [{"filename": "courbe_200120_153107.svg"}],
+  "filenameCellsVisited": "grid_200122_233449.json"
 }

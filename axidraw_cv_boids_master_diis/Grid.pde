@@ -10,6 +10,7 @@ class Grid
   boolean bMouseOver = false;
   boolean bClicked = false;
   int index = 0;
+  float wCell=0,hCell=0;
   Grid(int resx_, int resy_, float x_, float y_, float w_, float h_, float padding_)
   {
     this.resx = resx_;
@@ -40,9 +41,8 @@ class Grid
 
   void buildSub()
   {
-    float wCell = int((this.w - (resx-1)*padding) / float(resx)) ;
-    float hCell = int((this.h - (resy-1)*padding) / float(resy)) ;
-    //    println("wCell="+wCell+",hCell="+hCell);
+    this.wCell = int((this.w - (resx-1)*padding) / float(resx)) ;
+    this.hCell = int((this.h - (resy-1)*padding) / float(resy)) ;
 
     int offset=0;
     float xCell=x, yCell=y;

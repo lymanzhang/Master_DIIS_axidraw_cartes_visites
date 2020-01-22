@@ -35,7 +35,7 @@ class ControlBgCurve implements CallbackListener
   Textlabel label;
   Button btnRemove;
   String filename;
-  PShape shape;
+  PShapeCustom shape;
   boolean bRemove = false;
   float y;
 
@@ -43,7 +43,7 @@ class ControlBgCurve implements CallbackListener
   {
   }
 
-  void addForCurve(String filename, PShape s)
+  void addForCurve(String filename, PShapeCustom s)
   {
     this.filename = filename;
     this.shape = s;
@@ -67,6 +67,7 @@ class ControlBgCurve implements CallbackListener
     cp5.remove("lbl_"+filename);
     cp5.remove("btn_"+filename);
     bgCurves.remove(shape);
+    
   }
 
   public void controlEvent(CallbackEvent theEvent) 

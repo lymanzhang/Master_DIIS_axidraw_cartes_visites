@@ -13,6 +13,12 @@ PApplet applet;
 SDrop drop;
 
 // --------------------------------------------------
+int MODE_BOIDS = 0;
+int MODE_LINES = 1;
+int MODE_LINES2 = 2;
+int mode = MODE_LINES2;
+
+// --------------------------------------------------
 // Interface
 ControlP5 cp5;
 float yBgCurvesControls = 5;
@@ -20,6 +26,7 @@ float yBgCurvesControlsBegin = 5;
 Group groupControls;
 Button btnRelaunch;
 RadioButton rbColors;
+RadioButton rbModes;
 
 // --------------------------------------------------
 ArrayList<Boid> boids;
@@ -42,7 +49,7 @@ float marginImage = 56;
 float paddingImage = 40;
 
 boolean bEdit = true;
-
+boolean bDrawTargets = false;
 ArrayList<PShapeCustom> bgCurves;
 ArrayList<ControlBgCurve> controlsBgCurves;
 
@@ -71,7 +78,7 @@ color[] colorsBoids =
   color(255, 0, 255)
 };
 
-color colorBoids = colorsBoids[0];
+color colorBoids = colorsBoids[1];
 // --------------------------------------------------
 String[] competences = 
   {
@@ -127,6 +134,14 @@ void setupWindow()
 }
 
 // --------------------------------------------------
+void setMode(int m)
+{
+  mode = m;  
+  if (mode == MODE_BOIDS)
+    run();
+}
+
+// --------------------------------------------------
 void setWindowTitle(String title)
 {
   surface.setTitle(title);
@@ -166,6 +181,7 @@ void setup()
   setWindowTitle("Master DIIS 2019-2020 / Cartes de visite génératives");
   loadAppState();
   setEdit(true);
+  setMode(mode);
 }
 
 // --------------------------------------------------
@@ -268,18 +284,22 @@ void createTargets()
 void drawTargets()
 {
   if (targets == null) return;
-  pushStyle();
-  noStroke();
-  int index = 0;  
-  fill(0, alphaTargets);
-  textFont(hindRegular, 14);
-  for (PVector p : targets)
+  if (bEdit || bDrawTargets)
   {
-    ellipse(p.x, p.y, 10, 10);
-    text(""+index, p.x+8, p.y+4);
-    index++;
+    pushStyle();
+    noStroke();
+    int index = 0;  
+    fill(0, alphaTargets);
+    textFont(hindRegular, 14);
+    for (PVector p : targets)
+    {
+      ellipse(p.x, p.y, 10, 10);
+      if (bEdit)
+        text(""+index, p.x+8, p.y+4);
+      index++;
+    }
+    popStyle();
   }
-  popStyle();
 }
 
 // --------------------------------------------------
@@ -294,9 +314,65 @@ void drawInfos()
   pushStyle();
   fill(0);
   textFont(hindRegular, 16);
-  text(( bEdit ? "Mode édition" : "Mode courbe" ) + " (touche e pour changer)", marginImage, height-12);
+  text(( bEdit ? "Mode édition" : "Mode courbe"), marginImage, height-12);
   popStyle();
 }
+
+// --------------------------------------------------
+void drawLines()
+{
+  if (targets == null) return;
+  
+  pushStyle();
+  strokeWeight(strokeWeightBoids);
+  stroke(colorBoids);
+  int nbTargets = targets.size();
+  PVector A,B;
+  for (int i=0;i<nbTargets-1;i++)
+  {
+    A = targets.get(i);
+    B = targets.get(i+1);
+    line(A.x,A.y,B.x,B.y);
+  }
+  popStyle();
+}
+
+// --------------------------------------------------
+void drawLines2()
+{
+  if (targets == null) return;
+  
+  pushStyle();
+  strokeWeight(strokeWeightBoids);
+  stroke(colorBoids);
+  noFill();
+  int nbTargets = targets.size();
+  PVector A,B;
+  for (int i=0;i<nbTargets-1;i++)
+  {
+    A = targets.get(i);
+    B = targets.get(i+1);
+    
+    float dx = abs(B.x-A.x);
+    float dy = abs(B.y-A.y);
+    
+    if (dx <= 0.001 || dy <= 0.001)
+    {
+      line(A.x,A.y,B.x,B.y);
+    }
+    else
+    {
+      if (B.x > A.x)
+        bezier( A.x,A.y,A.x+dx,A.y,B.x-dx,B.y,B.x,B.y );
+      else
+        bezier( A.x,A.y,A.x-dx,A.y,B.x+dx,B.y,B.x,B.y );
+    }
+
+  }
+  popStyle();
+}
+
+
 
 // --------------------------------------------------
 void draw()
@@ -306,7 +382,8 @@ void draw()
 
   // Draw
   drawBackground();
-  grid.draw();
+  if (bEdit)
+    grid.draw();
   drawBackgroundCurves();
   //  image(mask,0,height-height/8,width/9,height/8);
 
@@ -318,8 +395,12 @@ void draw()
     {
       beginRecord(SVG, "data/exports/svg/courbe_"+timestamp()+".svg");
     }
-    drawBoids();
-    //mask(mask,0,0);
+    if (mode == MODE_BOIDS)
+      drawBoids();
+    else if (mode == MODE_LINES)
+      drawLines();
+    else if (mode == MODE_LINES2)
+      drawLines2();
 
     if (bExportSVG)
     {
@@ -404,60 +485,7 @@ void exportSVG()
   bExportSVG = true;
 }
 
-// ----------------------------------------------------------
-void initControls()
-{
-  int wSlider = 400, hSlider = 20, margin = 5;
-  int wButton = 100;
-  int hButton = hSlider;
-  float x = 5, y = 5;
 
-  cp5 = new ControlP5(this);
-  cp5.setAutoDraw(false);
-
-  groupControls = cp5.addGroup("Menu").setPosition(0, 10).setBackgroundHeight(400).setWidth(wSlider+2*margin+100).setBackgroundColor(color(0, 190));
-
-  cp5.addSlider("strokeWeightBoids").setRange(1, 6).setValue(strokeWeightBoids).setLabel("Epaisseur")
-    .setSize(wSlider, hSlider).setPosition(x, y).setGroup(groupControls);
-  y+=hSlider+margin;
-
-  cp5.addSlider("maxForceBoids").setRange(0.05, 4.0).setValue(maxForceBoids).setLabel("Force de rappel")
-    .setSize(wSlider, hSlider).setPosition(x, y).setGroup(groupControls);
-  y+=hSlider+margin;
-
-  cp5.addRange("maxSpeed").setRange(0.05, 4.0).setRangeValues(speedInfBoids, speedSupBoids).setLabel("Vitesses")
-    .setSize(wSlider, hSlider).setPosition(x, y).setGroup(groupControls);
-  y+=hSlider+margin;
-
-  rbColors = cp5.addRadioButton("radioButton")
-    .setPosition(x, y).setSize(wSlider/5, hSlider).setGroup(groupControls)
-    .setItemsPerRow(5)
-    .setSpacingColumn(20)
-    .addItem("c1", 0).addItem("c2", 1).addItem("c3", 2).addItem("c4", 3).addItem("c5", 4);
-  rbColors.activate(0);
-
-  y+=hSlider+margin;
-  yBgCurvesControlsBegin = yBgCurvesControls = y;
-
-  // ------------------------------------------------------------------------------
-
-  Button btnExport = cp5.addButton("exportSVG").setLabel("exporter")
-    .setSize(wButton, hButton).setPosition(width-wButton-margin, height-hButton-5);
-
-  Button btnSaveGrid = cp5.addButton("saveCellsVisited").setLabel("sauver la grille")
-    .setSize(wButton, hButton).setPosition(btnExport.getPosition()[0]-wButton-margin, height-hButton-5);
-
-  Button btnEraseGrid = cp5.addButton("eraseCellsVisited").setLabel("effacer la grille")
-    .setSize(wButton, hButton).setPosition(btnSaveGrid.getPosition()[0]-wButton-margin, height-hButton-5);
-
-  Button btnSaveApp = cp5.addButton("saveApp").setLabel("sauver la config")
-    .setSize(wButton, hButton).setPosition(btnEraseGrid.getPosition()[0]-wButton-margin, height-hButton-5);
-
-  btnRelaunch = cp5.addButton("relaunch").setLabel("relancer")
-    .setSize(wButton, hButton).setPosition(btnSaveApp.getPosition()[0]-wButton-margin, height-hButton-5);
-
-  groupControls.close();
-}
 
 // --------------------------------------------------
 void saveApp()
@@ -510,17 +538,6 @@ void loadCellsVisited(String filename)
 }
 
 
-
-// ----------------------------------------------------------
-void controlEvent(ControlEvent theEvent) 
-{
-  if (theEvent.isFrom(rbColors)) 
-  {
-    int indexColor = int(theEvent.getGroup().getValue());
-    colorBoids = colorsBoids[indexColor];
-  }
-}
-
 // ----------------------------------------------------------
 void removeControlsBgCurves()
 {
@@ -546,7 +563,7 @@ void removeControlsBgCurves()
 }
 
 // ----------------------------------------------------------
-void updateControlsBgCurves(String filename, PShape s)
+void updateControlsBgCurves(String filename, PShapeCustom s)
 {
   ControlBgCurve newControlBgCurve = new ControlBgCurve();
   newControlBgCurve.addForCurve(filename, s);
@@ -568,12 +585,14 @@ void dropEvent(DropEvent theDropEvent)
       PShape s = loadShape(f.getPath());
       if (s != null)
       {
+        
         synchronized(bgCurves)
         {
-          bgCurves.add( new PShapeCustom(filename,s) );
+          PShapeCustom newShape = new PShapeCustom(filename,s);
+          bgCurves.add( newShape );
+          updateControlsBgCurves(filename, newShape);
         }
         
-        updateControlsBgCurves(filename, s);
       }
     } else if (getFileExtension(f).toLowerCase().equals("json"))
     {
@@ -612,24 +631,25 @@ void loadAppState()
   try{
     JSONObject jAppState = loadJSONObject("appstate.json");
     filenameCellsVisited = jAppState.getString("filenameCellsVisited");
-    JSONArray jBgCurves = jAppState.getJSONArray("bgCurvesFilename");
+    JSONArray jBgCurves = jAppState.getJSONArray("curves");
     for (int i=0; i < jBgCurves.size(); i++)
     {
       JSONObject j = jBgCurves.getJSONObject(i);
       String filename = j.getString("filename");
-      PShape s = loadShape( filename );
+      PShape s = loadShape( "data/exports/svg/"+filename );
       if (s != null)
       {
         synchronized(bgCurves)
         {
-          bgCurves.add( new PShapeCustom(filename,s) );
+          PShapeCustom newShape = new PShapeCustom(filename,s);
+          bgCurves.add( newShape );
+          updateControlsBgCurves(filename, newShape);
         }
-        updateControlsBgCurves(filename, s);
       }
     }
     
     loadCellsVisited(filenameCellsVisited);
   } catch(Exception e){
-  
+  println(e);
   }
 }
