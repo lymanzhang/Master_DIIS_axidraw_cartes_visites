@@ -28,6 +28,9 @@ L'outil dispose de deux modes :
   * **mode lignes 2**, chaque point est relié au suivant avec un segment simple ou une courbe de [Bézier](https://processing.org/reference/bezier_.html).
 
 #### Menu
+* **Epaisseur** : en mode courbe, paramètre l'épaisseur des lignes.
+* **Force de rappel** : en mode courbe / rendu boids, paramètre la force avec laquelle l'agent autonome va être attiré vers le point. 
+* **Vitesses** : en mode courbe / rendu boids, paramètre les vitesses minimales et maximales de l'agent autonome. Par exemple, si les vitesses sont faibles et la force de rappel grande, l'agent aura tendance à se déplacer en ligne droite.
 
 
 #### Export / Sauvegarde
