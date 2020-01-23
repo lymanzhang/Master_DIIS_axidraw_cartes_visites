@@ -47,6 +47,8 @@ Il est possible d'importer par glisser-déposer dans l'application des courbes q
 
 <img src="images/dossier_exports.png" width="450px" />
 
+![Outil](images/import_courbes.png)
+
 
 ### Importer des points
 De même, il est possible d'importer par glisser-déposer dans l'application une configuration de points sauvegardée dans le dossier **data/exports/grid**
