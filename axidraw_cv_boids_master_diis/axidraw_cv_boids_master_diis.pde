@@ -69,53 +69,6 @@ String filenameCellsVisited = "";
 
 
 // --------------------------------------------------
-color[] colorsBoids = 
-  {
-  color(255, 255, 0), 
-  color(255, 0, 0), 
-  color(0, 255, 0), 
-  color(0, 0, 255), 
-  color(255, 0, 255)
-};
-
-color colorBoids = colorsBoids[1];
-// --------------------------------------------------
-String[] competences = 
-  {
-  "Collaboration", 
-  "Esprit critique", 
-  "Logique", 
-  "Empathie", 
-  "Créatif", 
-  "Technique", 
-  "Curieux", 
-  "Esprit analytique", 
-  "Observateur", 
-  "Méthodique", 
-  "Entrepreneur", 
-  "Organisé", 
-  "Leadership", 
-  "Perfectionniste", 
-  "Gestion du stress", 
-  "Programmation", 
-  "À l'écoute", 
-  "Produit", 
-  "UX / UI", 
-  "Communication / Graphisme", 
-  "Recherche et théorie", 
-  "Espace", 
-  "Prototypage", 
-  "Être force de proposition", 
-  "Productivité", 
-  "Vision systémique", 
-  "Efficacité", 
-  "Modélisation 3D", 
-  "Expression orale / écrite", 
-  " ??? "
-};
-
-
-// --------------------------------------------------
 void settings()
 {
   applet=(PApplet)this;
