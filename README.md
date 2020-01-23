@@ -45,11 +45,18 @@ L'outil dispose de deux modes :
 ### Importer des courbes
 Il est possible d'importer par glisser-déposer dans l'application des courbes qui ont été préalablement sauvegardées dans le dossier **data/exports/svg** Ces courbes ne sont plus modifiables directement depuis l'application, elle peuvent être effacée depuis l'interface avec le bouton « effacer » (voir capture)
 
+<img src="images/dossier_exports.png" width="450px" />
+
+
 ### Importer des points
 De même, il est possible d'importer par glisser-déposer dans l'application une configuration de points sauvegardée dans le dossier **data/exports/grid**
 
 NB : le glisser-déposer ne marche que pour un seul fichier à la fois, pas possible de glisser-déposer plusieurs fichiers en même temps.
 
+### Éditer le code
+Il est aussi possible d'éditer les compétences ainsi que leur ordre directement dans le code, dans l'onglet **Paramètres**. Il faut absolumment en laisser 30 (indexée de 0 à 29). De même, il est possible d'éditer les cinq couleurs dans le tableau *colorBoids*.
+
+<img src="images/edit_parameters.png" width="450px" />
 
 
 
