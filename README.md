@@ -13,6 +13,8 @@ Si la syntaxe est différente (notamment pour la déclaration *typée) de variab
 * Il est nécessaire d'installer deux librairies ([ControlP5](http://www.sojamo.de/libraries/controlP5/) pour la gestion d'interface graphique et une version modifiée de [Drop](http://www.sojamo.de/libraries/drop/) qui permet la gestion de glisser-déposer de fichiers dans l'application). Pour ce faire, il faut ouvrir le gestionnaire de librairies de Processing depuis le menu **Sketch > Importer une librairie ... > Ajouter une librairie ...**
 * Dans **l'onglet Librairies**, vous pouvez taper ControlP5 et SDrop pour trouver les libraries et cliquer sur le bouton Install pour les installer. 
 
+!(ControlP5)[images/install_controlP5_library.png]
+!(Drop)[images/install_drop_library.png]
 
 ### Interface
 
