@@ -11,7 +11,7 @@ Si la syntaxe est différente (notamment pour la déclaration *typée) de variab
 
 ### Installation
 * Télécharger [Processing 3.5.4](https://processing.org/download/)
-* Utiliser le bouton *clone or download* pour télécharger le sketch. 
+* Utiliser le bouton *clone or download* (en vert, en haut à droite sur cette page) pour télécharger le sketch. 
 * En cliquant sur un des fichiers .pde, Processing devrait s'ouvrir avec le code qui est scindée en plusieurs onglets.
 * Il est nécessaire d'installer deux librairies ([ControlP5](http://www.sojamo.de/libraries/controlP5/) pour la gestion d'interface graphique et une version modifiée de [Drop](http://www.sojamo.de/libraries/drop/) qui permet la gestion de glisser-déposer de fichiers dans l'application). Pour ce faire, il faut ouvrir le gestionnaire de librairies de Processing depuis le menu **Sketch > Importer une librairie ... > Ajouter une librairie ...**
 * Dans **l'onglet Librairies**, vous pouvez taper ControlP5 et SDrop pour trouver les libraries et cliquer sur le bouton Install pour les installer. 
