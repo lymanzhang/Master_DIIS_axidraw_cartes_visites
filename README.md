@@ -20,7 +20,7 @@ Si la syntaxe est différente (notamment pour la déclaration *typée) de variab
 <img src="images/install_drop_library.png" width="450px" />
 
 ### Outil
-L'outil dispose de deux modes : 
+L'outil dispose de deux modes, on passe de l'un à l'autre **en appuyant sur la touche 'e' du clavier**
 * **un mode d'édition** qui permet de modifier les points / compétences de chaque carte.
 * **un mode simulation / courbe** qui permet de visualiser différents types de courbes reliant les points. Il y a trois types de courbes : 
   * **mode boids** qui « lance » [un agent autonome](https://fr.wikipedia.org/wiki/Boids) qui va aller de point en point avec une certaine vitesse / accélération , produisant un rendu avec des boucles.
