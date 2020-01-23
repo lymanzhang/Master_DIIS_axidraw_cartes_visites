@@ -19,5 +19,15 @@ Si la syntaxe est différente (notamment pour la déclaration *typée) de variab
 ![ControlP5](images/install_controlP5_library.png)
 ![Drop](images/install_drop_library.png)
 
-### Interface
+### Outil
+L'outil dispose de deux modes : 
+* **un mode d'édition** qui permet de modifier les points / compétences de chaque carte.
+* **un mode simulation / courbe** qui permet de visualiser différents types de courbes reliant les points. Il y a trois types de courbes : 
+  * **mode boids** qui « lance » [un agent autonome](https://fr.wikipedia.org/wiki/Boids) qui va aller de point en point avec une certaine vitesse / accélération , produisant un rendu avec des boucles.
+  * **mode lignes**, chaque point est relié au suivant avec un segment simple.
+  * **mode lignes 2**, chaque point est relié au suivant avec un segment simple ou une courbe de [Bézier](https://processing.org/reference/bezier_.html).
 
+#### Menu
+
+
+#### Export / Sauvegarde
