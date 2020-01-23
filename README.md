@@ -1,6 +1,9 @@
 # Cartes de visites Master DIIS promo 2021
 Outil pour générer les motifs pour des cartes de visite.
 
+![Outil](images/interface.png)
+
+
 ### Préambule
 L'outil a été écrit avec Processing qui est dans sa conception est antérieur à p5.js dont nous avons étudié les bases en cours au mois d'octobre et de novembre. Ayant déjà des algorithmes « prêt à l'emploi » pour l'export au format vectoriel, j'ai préféré développer avec pour des raisons d'efficacité.
 
