@@ -15,11 +15,11 @@ void initControls()
     .setSize(wSlider, hSlider).setPosition(x, y).setGroup(groupControls);
   y+=hSlider+margin;
 
-  cp5.addSlider("maxForceBoids").setRange(0.05, 4.0).setValue(maxForceBoids).setLabel("Force de rappel")
+  cp5.addSlider("maxForceBoids").setRange(0.05, 6.0).setValue(maxForceBoids).setLabel("Force de rappel")
     .setSize(wSlider, hSlider).setPosition(x, y).setGroup(groupControls);
   y+=hSlider+margin;
 
-  cp5.addRange("maxSpeed").setRange(0.05, 4.0).setRangeValues(speedInfBoids, speedSupBoids).setLabel("Vitesses")
+  cp5.addRange("maxSpeed").setRange(0.05, 10.0).setRangeValues(speedInfBoids, speedSupBoids).setLabel("Vitesses")
     .setSize(wSlider, hSlider).setPosition(x, y).setGroup(groupControls);
   y+=hSlider+margin;
 
