@@ -83,6 +83,6 @@ void controlEvent(ControlEvent theEvent)
   else if (theEvent.isFrom(rbModes)) 
   {
     int indexMode = int(theEvent.getGroup().getValue());
-    //setMode(indexMode);
+    setMode(indexMode);
   }
 }
