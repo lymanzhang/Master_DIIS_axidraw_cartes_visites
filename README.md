@@ -42,13 +42,13 @@ L'outil dispose de deux modes :
 * **Sauver la grille** : sauvegarde la configuration de la grille dans un fichier horodaté dans le dossier **data/exports/grid** (voir capture)
 * **Exporter** : exporte la courbe en format vectoriel dans un fichier horodaté dans le dossier **data/exports/svg**. C'est ce type de fichiers dont nous allons nous servir pour l'impression avec le traceur axidraw. Ces courbes sont éditables avec des applications type Illustrator par exemple.
 
+<img src="images/dossier_exports.png" width="450px" />
+
+
 ### Importer des courbes
 Il est possible d'importer par glisser-déposer dans l'application des courbes qui ont été préalablement sauvegardées dans le dossier **data/exports/svg** Ces courbes ne sont plus modifiables directement depuis l'application, elle peuvent être effacée depuis l'interface avec le bouton « effacer » (voir capture)
 
-<img src="images/dossier_exports.png" width="450px" />
-
 ![Outil](images/import_courbes.png)
-
 
 ### Importer des points
 De même, il est possible d'importer par glisser-déposer dans l'application une configuration de points sauvegardée dans le dossier **data/exports/grid**
