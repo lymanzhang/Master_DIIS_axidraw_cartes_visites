@@ -31,6 +31,16 @@ L'outil dispose de deux modes :
 * **Epaisseur** : en mode courbe, paramètre l'épaisseur des lignes.
 * **Force de rappel** : en mode courbe / rendu boids, paramètre la force avec laquelle l'agent autonome va être attiré vers le point. 
 * **Vitesses** : en mode courbe / rendu boids, paramètre les vitesses minimales et maximales de l'agent autonome. Par exemple, si les vitesses sont faibles et la force de rappel grande, l'agent aura tendance à se déplacer en ligne droite.
+* **C1 | C2 | C3 | C4 | C5** : en mode courbe, choix de la couleur.
+* **Boids | Lignes | Lignes 2** : en mode courbe, choix du mode de rendu.
+* **Dessin des points** : en mode courbe, active ou non le rendu des cibles pour un dessin très Bordeaux Métropole ;-)
+
+### Menu boutons
+* **Relancer** : en rendu boids, permet de relancer l'agent autonome.
+* **Sauvegarder la config** : si des courbes et une grille de points ont été importés par glisser-déposer (voir le paragraphe Export / Sauvegarde), la configuration est sauvée dans le fichier appState.json et cette configuration est rechargée au prochain démarage de l'application.
+* **Effacer la grille** : efface tous les points de la grille.
+* **Sauver la grille** : sauvegarde la configuration de la grille dans un fichier horodaté dans le dossier **data/exports/grid** (voir capture)
+* **Exporter** : exporte la courbe en format vectoriel dans un fichier horodaté dans le dossier **data/exports/svg**. C'est ce type de fichiers dont nous allons nous servir pour l'impression avec le traceur axidraw. Ces courbes sont éditables avec des applications type Illustrator par exemple.
 
 
 #### Export / Sauvegarde
