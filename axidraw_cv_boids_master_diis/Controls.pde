@@ -54,11 +54,15 @@ void initControls()
 
   // ------------------------------------------------------------------------------
 
-  Button btnExport = cp5.addButton("exportSVG").setLabel("exporter")
+  Button btnExport = cp5.addButton("exportSVG").setLabel("exporter courbe")
     .setSize(wButton, hButton).setPosition(width-wButton-margin, height-hButton-5);
 
-  Button btnSaveGrid = cp5.addButton("saveCellsVisited").setLabel("sauver la grille")
+  Button btnExportCards = cp5.addButton("exportCards").setLabel("exporter cartes")
     .setSize(wButton, hButton).setPosition(btnExport.getPosition()[0]-wButton-margin, height-hButton-5);
+
+
+  Button btnSaveGrid = cp5.addButton("saveCellsVisited").setLabel("sauver la grille")
+    .setSize(wButton, hButton).setPosition(btnExportCards.getPosition()[0]-wButton-margin, height-hButton-5);
 
   Button btnEraseGrid = cp5.addButton("eraseCellsVisited").setLabel("effacer la grille")
     .setSize(wButton, hButton).setPosition(btnSaveGrid.getPosition()[0]-wButton-margin, height-hButton-5);

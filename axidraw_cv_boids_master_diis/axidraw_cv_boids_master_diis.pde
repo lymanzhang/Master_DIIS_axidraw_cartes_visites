@@ -56,7 +56,7 @@ ArrayList<ControlBgCurve> controlsBgCurves;
 // --------------------------------------------------
 // Assets
 PImage bg;
-float f = 1.25;
+float f = 1.75;
 PFont hindRegular;
 
 // --------------------------------------------------
@@ -430,6 +430,10 @@ void keyPressed()
   {
     toggleEdit();
   }
+  else if (key == 'c')
+  {
+    exportCards();
+  }
 }
 
 // ----------------------------------------------------------
@@ -489,7 +493,6 @@ void loadCellsVisited(String filename)
   }
   createTargets();
 }
-
 
 // ----------------------------------------------------------
 void removeControlsBgCurves()
@@ -605,4 +608,21 @@ void loadAppState()
   } catch(Exception e){
   println(e);
   }
+}
+
+
+// ----------------------------------------------------------
+void exportCards()
+{
+    String folderCards = "data/exports/cards_"+timestamp()+"/";
+    for (int j=0; j<grid.resy; j++)
+    {
+      for (int i=0; i<grid.resx; i++)
+      {
+        int offset = i + grid.resx*j;
+        GridCell cell = grid.cells[offset];
+        PImage crop = get((int)cell.x,(int)cell.y,(int)cell.w,(int)cell.h);
+        crop.save(folderCards+"card_"+offset+".png");
+      }
+    }
 }
