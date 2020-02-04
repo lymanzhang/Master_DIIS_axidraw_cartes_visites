@@ -1,35 +1,35 @@
 String[] competences = 
   {
-  "Collaboration", // 0
-  "Esprit critique",  // 1
-  "Logique",  // 2
-  "Empathie", // 3 
-  "Créatif", // 4
-  "Technique", // 5
-  "Curieux", // 6
-  "Esprit analytique", // 7
-  "Observateur", // 8
-  "Méthodique", // 9
-  "Entrepreneur", // 10
-  "Organisé", // 11
-  "Leadership", // 12
-  "Perfectionniste", // 13
-  "Gestion du stress", // 14
-  "Programmation", // 15
-  "À l'écoute", // 16
-  "Produit", // 17
-  "UX / UI", // 18
-  "Communication / Graphisme", // 19
-  "Recherche et théorie", // 20
-  "Espace", // 21
-  "Prototypage", // 22
-  "Être force de proposition", // 23
-  "Productivité", // 24
-  "Vision systémique", // 25
-  "Efficacité", // 26
-  "Modélisation 3D", // 27
-  "Expression orale / écrite", // 28
-  " ??? " // 29
+"Modélisation 3D", // 1
+  "Adaptabilité",  // 2
+  "Recherche et théorie",  // 3
+  "Leadership", // 4 
+  "Social", // 5
+  "Programmation", // 6
+  "Productivité", // 7
+  "Créatif", // 8
+  "Expression orale et écrite", // 9
+  "Graphisme", // 10
+  "Nouvelles technologies", // 11
+  "Collaboration", // 12
+  "UI design", // 13
+  "Esprit analytique", // 14
+  "Gestion du stress", // 15
+  "Esprit critique", // 16
+  "UX design", // 17
+  "Prototypage", // 18
+  "Curieux", // 19
+  "Force de proposition", // 20
+  "Environnement", // 21
+  "Dessin, croquis", // 22
+  "Empathie", // 23
+  "Espace", // 24
+  "Communication", // 25
+  "Observateur", // 26
+  "Vision systémique", // 27
+  "Perfectionnisme", // 28
+  "Produit", // 29
+  "Méthodique" // 30
 };
 
 
