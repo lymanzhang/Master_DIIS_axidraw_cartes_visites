@@ -1,7 +1,8 @@
 # Cartes de visites Master DIIS promo 2021
 Outil pour générer les motifs pour des cartes de visite.
+
 ### Scénario
-Chaque étudiant possède et développe au sein du master des compétences propres et complémentaires des autres étudiants, exprimées lors de projet en groupe notamment. Ce projet de création de cartes de visite génératives vise à représenter ces spécificités et complémentarités en reliant par un trait continu chaque carte, elle-même définissant une carte des compétences de l'étudiant.
+Chaque étudiant possède et développe au sein du master des compétences propres et complémentaires des autres étudiants, exprimées lors de projets en groupe notamment. Cette création de cartes de visite génératives vise à représenter ces spécificités et complémentarités en reliant par un trait continu chaque carte, comportant chacune les compétences de l'étudiant symbolisées par une cellule.
 
 
 ![Outil](images/principe.png)
