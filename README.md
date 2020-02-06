@@ -1,13 +1,17 @@
 # Cartes de visites Master DIIS promo 2021
 Outil pour générer les motifs pour des cartes de visite.
+### Scénario
+Chaque étudiant possède et développe au sein du master des compétences propres et complémentaires des autres étudiants, exprimées lors de projet en groupe notamment. Ce projet de création de cartes de visite génératives vise à représenter ces spécificités et complémentarités en reliant par un trait continu chaque carte, elle-même définissant une carte des compétences de l'étudiant.
 
-![Outil](images/interface.png)
 
+![Outil](images/principe.png)
 
 ### Préambule
 L'outil a été écrit avec Processing qui est dans sa conception est antérieur à p5.js dont nous avons étudié les bases en cours au mois d'octobre et de novembre. Ayant déjà des algorithmes « prêt à l'emploi » pour l'export au format vectoriel, j'ai préféré développer avec pour des raisons d'efficacité.
 
 Si la syntaxe est différente (notamment pour la déclaration *typée) de variables)*, la logique d'application reste néanmoins la même avec l'articulation autour des gestionnaires **setup()** et **draw()**, et des gestionnaires d'évènements qui captent en particulier les déplacements et les clicks souris / clavier. 
+
+![Outil](images/interface.png)
 
 ### Installation
 * Télécharger [Processing 3.5.4](https://processing.org/download/)
